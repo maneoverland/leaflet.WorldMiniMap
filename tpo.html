@@ -17,13 +17,14 @@
 		<main style="width:100%;height:100%;">
 			<div id="map" style="background-color:#ffffff;width:100%;height:100%;"></div>
 			<script type='text/javascript'>
-				// create map and implicitly create WorldMiniMap-Control and prevent creation of zoom-Control
-				var map = new L.Map('map', {zoomControl: false, worldMiniMapControl: true});
-				var osmUrl='http://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png';
-				var osmAttrib='Map data &copy; OpenStreetMap contributors';
-				var osm = new L.TileLayer(osmUrl, {minZoom: 5, maxZoom: 18, attribution: osmAttrib});
+				var map = new L.Map('map');
+				// create WorldMiniMap with some options and add to map
+				var worldMiniMap = L.control.worldMiniMap({position: 'bottomleft', style: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}}).addTo(map);
+				var tpoUrl='https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png';
+				var tpoAttrib='<a href="https://www.bkg.bund.de/" target="_blank">Bundesamt für Kartographie und Geodäsie</a>';
+				var tpo = new L.TileLayer(tpoUrl, {minZoom: 5, maxZoom: 18, attribution: tpoAttrib});
 
-				map.addLayer(osm);
+				map.addLayer(tpo);
 				map.setView(new L.LatLng(48.1, 11.9),7);
 			</script>
 		</main>
