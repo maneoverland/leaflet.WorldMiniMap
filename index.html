@@ -19,9 +19,9 @@
 			<script type='text/javascript'>
 				// create map and implicitly create WorldMiniMap-Control and prevent creation of zoom-Control
 				var map = new L.Map('map', {zoomControl: false, worldMiniMapControl: true});
-				var osmUrl='http://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png';
+				var osmUrl='https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png';
 				var osmAttrib='Map data &copy; OpenStreetMap contributors';
-				var osm = new L.TileLayer(osmUrl, {minZoom: 5, maxZoom: 18, attribution: osmAttrib});
+				var osm = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 20, attribution: osmAttrib});
 
 				map.addLayer(osm);
 				map.setView(new L.LatLng(48.1, 11.9),7);
