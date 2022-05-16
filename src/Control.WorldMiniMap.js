@@ -91,9 +91,31 @@
 		_showMap: function (map) {
 			// translage view-coordinates to image-pixels on an world-map-image in equirectangular projection
 			var wPx = this._mMWpx(map.getBounds().getWest(),360,this._container.width);
+			var wPxKorr;
 			var ePx = this._mMWpx(map.getBounds().getEast(),360,this._container.width);
 			var nPx = this._mMWpx(map.getBounds().getNorth(),-180,this._container.height);
 			var sPx = this._mMWpx(map.getBounds().getSouth(),-180,this._container.height);
+			// adjust north - south
+			if (nPx < 1)
+				nPx = 1;
+			if (sPx >= this._container.height)
+				sPx = this._container.height - 1;
+			if (sPx-nPx < this.options.lineWidth)
+				sPx = nPx + this.options.lineWidth;
+			// adjust east - west, special for horizontal scroll
+			if (ePx-wPx > this._container.width) {
+				wPx = 1;
+				ePx = this._container.width - 1;
+			} else {
+				wPxKorr = wPx % this._container.width;
+				if (wPxKorr < 0)
+					wPxKorr += this._container.width;
+				wPxKorr -= wPx;
+				wPx += wPxKorr;
+				ePx += wPxKorr;
+			}
+			if (ePx-wPx < this.options.lineWidth)
+				ePx = wPx + this.options.lineWidth;
 			// clear canvas
 			this._MMWCtx.clearRect(0, 0, this._container.width, this._container.height);
 			// draw world-map-image as background
@@ -103,12 +125,12 @@
 				this._MMWCtx.beginPath();
 				this._MMWCtx.lineWidth = this.options.lineWidth;
 				this._MMWCtx.strokeStyle = this.options.lineColor;
-				if (ePx-wPx < 1)
-					ePx = wPx + 1;
-				if (sPx-nPx < 1)
-					sPx = nPx + 1;
 				this._MMWCtx.rect(wPx,nPx,ePx-wPx,sPx-nPx);
 				this._MMWCtx.stroke();
+				if (ePx > this._container.width) {
+					this._MMWCtx.rect(wPx-this._container.width,nPx,ePx-wPx,sPx-nPx);
+					this._MMWCtx.stroke();
+				}
 			}
 			if ((ePx-wPx <= 2 * this.options.circleRadius && sPx-nPx <= 2 * this.options.circleRadius) && this.options.view == 'auto' || this.options.view == 'both' || this.options.view == 'circle') {
 				// show center of actual view as filled circle on world-map-image
