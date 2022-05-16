@@ -22,7 +22,7 @@
 				var worldMiniMap = L.control.worldMiniMap({position: 'bottomleft', style: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}}).addTo(map);
 				var tpoUrl='https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png';
 				var tpoAttrib='<a href="https://www.bkg.bund.de/" target="_blank">Bundesamt für Kartographie und Geodäsie</a>';
-				var tpo = new L.TileLayer(tpoUrl, {minZoom: 5, maxZoom: 18, attribution: tpoAttrib});
+				var tpo = new L.TileLayer(tpoUrl, {minZoom: 0, maxZoom: 19, attribution: tpoAttrib});
 
 				map.addLayer(tpo);
 				map.setView(new L.LatLng(48.1, 11.9),7);
