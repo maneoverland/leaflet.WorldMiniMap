@@ -95,17 +95,18 @@
 			var ePx = this._mMWpx(map.getBounds().getEast(),360,this._container.width);
 			var nPx = this._mMWpx(map.getBounds().getNorth(),-180,this._container.height);
 			var sPx = this._mMWpx(map.getBounds().getSouth(),-180,this._container.height);
+			var border = this.options.lineWidth / 2;
 			// adjust north - south
-			if (nPx < 1)
-				nPx = 1;
-			if (sPx >= this._container.height)
-				sPx = this._container.height - 1;
+			if (nPx < border)
+				nPx = border;
+			if (sPx > this._container.height - border)
+				sPx = this._container.height - border;
 			if (sPx-nPx < this.options.lineWidth)
 				sPx = nPx + this.options.lineWidth;
 			// adjust east - west, special for horizontal scroll
 			if (ePx-wPx > this._container.width) {
-				wPx = 1;
-				ePx = this._container.width - 1;
+				wPx = border;
+				ePx = this._container.width - border;
 			} else {
 				wPxKorr = wPx % this._container.width;
 				if (wPxKorr < 0)
