@@ -20,7 +20,7 @@
 }(function (L) {
 	var WorldMiniMap = L.Control.extend({
 		options: {
-			position: 'topleft',
+			position: 'bottomleft',
 			width: 168,
 			height: 84,
 			view: 'auto',
@@ -29,7 +29,7 @@
 			circleRadius: 3,
 			circleColor: 'white',
 			// see https://commons.wikimedia.org/wiki/File:Equirectangular_projection_world_map_without_borders.svg?uselang=de
-			map: document.currentScript.src.substring(0, document.currentScript.src.lastIndexOf('/')) + '/Control.WorldMiniMap.svg',
+			map: document.currentScript.src.substring(0, document.currentScript.src.lastIndexOf('.')) + '.svg',
 			style: {}
 		},
 		// i've decided, to style canvas-element inline and not by extern css
@@ -55,6 +55,7 @@
 			this._WMMImg.src = this.options.map;
 			// Merge local style to container-style
 			L.Util.extend(this._container.style,this.style);
+			this._container.style.visibility = 'hidden';
 		},
 		onAdd: function (map) {
 			var aktObj = this;
@@ -69,6 +70,7 @@
 				aktObj._container.width = this.width;
 				aktObj._container.style.height = this.height + 'px';
 				aktObj._container.style.width = this.width + 'px';
+				aktObj._container.style.visibility = 'visible';
 				aktObj._showMap(map);
 			}
 			// Event to update frame on map
@@ -83,30 +85,30 @@
 			// Update frame on map after moveend
 			this._showMap (e.target);
 		},
-		_mMWpx: function (c, w, z) {
+		_coord2Px: function (coord, maxDegree, pxWidth) {
 			// translate coordinates to image-pixels on an world-map-image in equirectangular projection
-			return Math.round((c / w + .5) * z);
+			return Math.round((coord / maxDegree + .5) * pxWidth);
 		},
 		// Show world-map-image with view-frame in canvas-element
 		_showMap: function (map) {
 			// translage view-coordinates to image-pixels on an world-map-image in equirectangular projection
-			var wPx = this._mMWpx(map.getBounds().getWest(),360,this._container.width);
+			var wPx = this._coord2Px(map.getBounds().getWest(),360,this._container.width);
 			var wPxKorr;
-			var ePx = this._mMWpx(map.getBounds().getEast(),360,this._container.width);
-			var nPx = this._mMWpx(map.getBounds().getNorth(),-180,this._container.height);
-			var sPx = this._mMWpx(map.getBounds().getSouth(),-180,this._container.height);
-			var border = this.options.lineWidth / 2;
+			var ePx = this._coord2Px(map.getBounds().getEast(),360,this._container.width);
+			var nPx = this._coord2Px(map.getBounds().getNorth(),-180,this._container.height);
+			var sPx = this._coord2Px(map.getBounds().getSouth(),-180,this._container.height);
+			var borderFrame = this.options.lineWidth / 2;
 			// adjust north - south
-			if (nPx < border)
-				nPx = border;
-			if (sPx > this._container.height - border)
-				sPx = this._container.height - border;
+			if (nPx < borderFrame)
+				nPx = borderFrame;
+			if (sPx > this._container.height - borderFrame)
+				sPx = this._container.height - borderFrame;
 			if (sPx-nPx < this.options.lineWidth)
 				sPx = nPx + this.options.lineWidth;
-			// adjust east - west, special for horizontal scroll
+			// adjust east - west, especially for horizontal scroll
 			if (ePx-wPx > this._container.width) {
-				wPx = border;
-				ePx = this._container.width - border;
+				wPx = borderFrame;
+				ePx = this._container.width - borderFrame;
 			} else {
 				wPxKorr = wPx % this._container.width;
 				if (wPxKorr < 0)
@@ -117,10 +119,11 @@
 			}
 			if (ePx-wPx < this.options.lineWidth)
 				ePx = wPx + this.options.lineWidth;
-			// clear canvas
+			// to show map and view-frame, first clear old image
 			this._MMWCtx.clearRect(0, 0, this._container.width, this._container.height);
 			// draw world-map-image as background
 			this._MMWCtx.drawImage(this._WMMImg,0, 0, this._container.width, this._container.height);
+			// view-frame on background-image
 			if ((ePx-wPx > 2 * this.options.circleRadius || sPx-nPx > 2 * this.options.circleRadius) && this.options.view == 'auto' || this.options.view == 'both' || this.options.view == 'square') {
 				// show actual view as rectangle on world-map-image
 				this._MMWCtx.beginPath();
@@ -128,11 +131,13 @@
 				this._MMWCtx.strokeStyle = this.options.lineColor;
 				this._MMWCtx.rect(wPx,nPx,ePx-wPx,sPx-nPx);
 				this._MMWCtx.stroke();
+				// show second view-frame on left side, if first view-frame exceeds right border of background-image
 				if (ePx > this._container.width) {
 					this._MMWCtx.rect(wPx-this._container.width,nPx,ePx-wPx,sPx-nPx);
 					this._MMWCtx.stroke();
 				}
 			}
+			// view-circle on background-image
 			if ((ePx-wPx <= 2 * this.options.circleRadius && sPx-nPx <= 2 * this.options.circleRadius) && this.options.view == 'auto' || this.options.view == 'both' || this.options.view == 'circle') {
 				// show center of actual view as filled circle on world-map-image
 				this._MMWCtx.fillStyle = this.options.circleColor;
