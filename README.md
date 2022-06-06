@@ -8,5 +8,5 @@ Support
 This plugin was developed and tested with Leaflet version 1.8.0 and Microsoft Edge 102.0.1245.
 
 Demo:
-* [OSM-Standard](https://maneoverland.github.io/leaflet.WorldMiniMap/)
-* [TopPlusOpen-Options](https://maneoverland.github.io/leaflet.WorldMiniMap/tpo.html)
+* [OSM-map with standard-options](https://maneoverland.github.io/leaflet.WorldMiniMap/)
+* [TopPlusOpen-map with user-options](https://maneoverland.github.io/leaflet.WorldMiniMap/tpo.html)
