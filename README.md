@@ -15,6 +15,7 @@ Demo:
 
 Usage
 -----
+The control needs the actual js-script 'Control.WorldMiniMap.js' and the world-image (by default with the same name in the same folder as the js-script, but with '.svg' extension instead of '.js').
 
 Include js-script either from downloaded version
 ```js
