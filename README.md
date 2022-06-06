@@ -5,7 +5,7 @@ This plugin for [Leaflet](https://leafletjs.com/) allows you to add a small worl
 
 Support
 -------
-This plugin was developed and tested with Leaflet version 1.8.0 and Microsoft Edge 102.0.1245.
+This plugin was developed and tested with Leaflet 1.8.0 and Microsoft Edge 102.0.1245.
 
 ![screenshot](https://raw.github.com/maneoverland/leaflet.WorldMiniMap/master/OSM-Demo.PNG "Default look of the magnifying glass")
 
