@@ -7,7 +7,7 @@ Support
 -------
 This plugin was developed and tested with Leaflet 1.8.0 and Microsoft Edge 102.0.1245.
 
-![screenshot](https://raw.github.com/maneoverland/leaflet.WorldMiniMap/master/OSM-Demo.PNG "Default look of the magnifying glass")
+![screenshot](https://raw.github.com/maneoverland/leaflet.WorldMiniMap/master/OSM-Demo.PNG "Default look of WorldMiniMap")
 
 Demo:
 * [OSM-map with standard-options](https://maneoverland.github.io/leaflet.WorldMiniMap/)
