@@ -31,13 +31,14 @@ To create the minimap from downloaded version include following line in your js
 ```
 
 ### Using hosted version
+The control is also available on free CDN [jsDelivr](https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@1.0.0/dist/Control.WorldMiniMap.js).
 To create the minimap from hosted version include following line in your js
 ```js
 <script src="https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@1.0.0/dist/Control.WorldMiniMap.js" integrity="sha512-PFw8St3qenU1/dmwCfiYYN/bRcqY1p3+sBATR+rZ6622eyXOk/8izVtlmm/k8qW7KbRIJsku838WCV5LMs6FCg==" crossorigin=""></script>
 ```
 
 ### Example of using the included js-script
-Then the minimap-control can either be created via option in map-creation
+When the js-script is included, then the minimap-control can either be created via option in map-creation
 ```js
 var map = new L.Map('map', {worldMiniMapControl: true});
 ```
@@ -45,3 +46,25 @@ or alternatively with extra create-command including additional options
 ```js
 var worldMiniMap = L.control.worldMiniMap({position: 'topright', style: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}}).addTo(map);
 ```
+
+### Available Options
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| position | String | 'bottomleft' | The position of the control (one of the map corners). Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright' |
+| width | Number | 168 | The width of the world-image in pixels |
+| height | Number | 84 | The height of the world-image in pixels |
+| view | String | 'auto' | Controls the display of the map-view as a square or a circle. Possible values are 'auto', 'both', 'square', 'circle' |
+| lineWidth | Number | 2 | Line width of the square in pixels |
+| lineColor | String | 'white' | Line color of the square in HTML-syntax (e.g. '#123456') |
+| circleRadius | Number | 3 | Radius of the circle in pixels |
+| circleColor | String | 'white' | Color of the circle in HTML-syntax (e.g. '#123456') |
+| map | String | ':control:.svg' | Link to world-image in equirectangular projection, on which the square and circle of the map-view is shown |
+| style | Object | {} | Style-options for canvas-element in HTML-syntax |
+
+Building minified version
+-------------------------
+The minified version of js-script in 'dist'-folder is created from js-script in 'src'-folder by [JSCompress](https://jscompress.com/).
+
+Creating integrity-hash
+-----------------------
+The hash for the integrity-option of hosted version is created by [SRI Hash Generator](https://www.srihash.org/).
