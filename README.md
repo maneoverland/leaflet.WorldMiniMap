@@ -18,7 +18,7 @@ Usage
 ### Download
 | Version          |  Description |
 | ---             | --- |
-| [V1.0.0](https://github.com/maneoverland/leaflet.WorldMiniMap/archive/refs/tags/v1.0.0.zip)        | Initial release. |
+| [v1.0.0](https://github.com/maneoverland/leaflet.WorldMiniMap/archive/refs/tags/v1.0.0.zip)        | Initial release. |
 
 In the zip-archive are folders 'src' and 'dist'. Each folder contains a js- and a svg-file - in the 'dist'-folder is the minified version of the js-file from the 'src'-folder. The two files of a folder are needed by default to create the minimap-control.
 
