@@ -17,7 +17,7 @@ Usage
 -----
 The control needs the actual js-script 'Control.WorldMiniMap.js' and the world-image (by default with the same name in the same folder as the js-script, but with '.svg' extension instead of '.js').
 
-Include js-script either from downloaded version
+Include js-script either from downloaded version (attention: you have to download and save the file 'Control.WorldMiniMap.svg' in the same folder as the js-file by default)
 ```js
 <script src="dist/Control.WorldMiniMap.js"></script>
 ```
