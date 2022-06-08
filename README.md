@@ -50,16 +50,16 @@ var worldMiniMap = L.control.worldMiniMap({position: 'topright', style: {opacity
 ### Available Options
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| position | String | 'bottomleft' | The position of the control (one of the map corners). Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright' |
+| position | String | 'bottomleft' | The position of the control (one of the map corners).<br/>Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright' |
 | width | Number | 168 | The width of the world-image in pixels |
 | height | Number | 84 | The height of the world-image in pixels |
-| view | String | 'auto' | Controls the display of the map-view as a square or a circle. Possible values are 'auto', 'both', 'square', 'circle' |
+| view | String | 'auto' | Controls the display of the map-view as a square or a circle.<br/>Possible values are 'auto', 'both', 'square', 'circle' |
 | lineWidth | Number | 2 | Line width of the square in pixels |
 | lineColor | String | 'white' | Line color of the square in HTML-syntax (e.g. '#123456') |
 | circleRadius | Number | 3 | Radius of the circle in pixels |
 | circleColor | String | 'white' | Color of the circle in HTML-syntax (e.g. '#123456') |
-| map | String | ':control:.svg' | Link to world-image in equirectangular projection, on which the square and circle of the map-view is shown |
-| style | Object | {} | Style-options for canvas-element in HTML-syntax |
+| map | String | ':control:.svg' | Link to world-image in equirectangular projection,<br/>on which the square and circle of the map-view is shown |
+| style | Object | {<br/>backgroundColor: '#919eac',<br/>border: '2px solid black',<br/>borderRadius: '5px',<br/>padding: '3px'<br/>} | Style-options for canvas-element in HTML-syntax |
 
 Building minified version
 -------------------------
