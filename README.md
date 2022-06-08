@@ -25,24 +25,24 @@ In the zip-archive are folders 'src' and 'dist'. Each folder contains a js- and 
 The control needs the actual js-script 'Control.WorldMiniMap.js' and a world-image (by default with the same name in the same folder as the js-script, but with '.svg' extension instead of '.js').
 
 ### Using downloaded version
-To create the minimap from downloaded version include following line in your js
+To create the minimap from downloaded version include following line in your js:
 ```js
 <script src="dist/Control.WorldMiniMap.js"></script>
 ```
 
 ### Using hosted version
 The control is also available on free CDN [jsDelivr](https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@1.0.0/dist/Control.WorldMiniMap.js).
-To create the minimap from hosted version include following line in your js
+To create the minimap from hosted version include following line in your js:
 ```js
 <script src="https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@1.0.0/dist/Control.WorldMiniMap.js" integrity="sha512-PFw8St3qenU1/dmwCfiYYN/bRcqY1p3+sBATR+rZ6622eyXOk/8izVtlmm/k8qW7KbRIJsku838WCV5LMs6FCg==" crossorigin=""></script>
 ```
 
 ### Example of using the included js-script
-When the js-script is included, then the minimap-control can either be created via option in map-creation
+When the js-script is included, then the minimap-control can be created via option in map-creation:
 ```js
 var map = new L.Map('map', {worldMiniMapControl: true});
 ```
-or alternatively with extra create-command including additional options
+Alternatively the minimap-control can be created with extra create-command including additional options:
 ```js
 var worldMiniMap = L.control.worldMiniMap({position: 'topright', style: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}}).addTo(map);
 ```
@@ -50,16 +50,16 @@ var worldMiniMap = L.control.worldMiniMap({position: 'topright', style: {opacity
 ### Available Options
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| position | String | 'bottomleft' | The position of the control (one of the map corners).<br/>Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright' |
-| width | Number | 168 | The width of the world-image in pixels |
-| height | Number | 84 | The height of the world-image in pixels |
-| view | String | 'auto' | Controls the display of the map-view as a square or a circle.<br/>Possible values are 'auto', 'both', 'square', 'circle' |
-| lineWidth | Number | 2 | Line width of the square in pixels |
-| lineColor | String | 'white' | Line color of the square in HTML-syntax (e.g. '#123456') |
-| circleRadius | Number | 3 | Radius of the circle in pixels |
-| circleColor | String | 'white' | Color of the circle in HTML-syntax (e.g. '#123456') |
-| map | String | ':control:.svg' | Link to world-image in equirectangular projection,<br/>on which the square and circle of the map-view is shown |
-| style | Object | {<br/>backgroundColor: '#919eac',<br/>border: '2px solid black',<br/>borderRadius: '5px',<br/>padding: '3px'<br/>} | Style-options for canvas-element in HTML-syntax |
+| position | String | 'bottomleft' | The position of the control (one of the map corners).<br/>Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright'. |
+| width | Number | 168 | The width of the world-image in pixels. |
+| height | Number | 84 | The height of the world-image in pixels. |
+| view | String | 'auto' | Controls the display of the map-view as a square or a circle.<br/>Possible values are 'auto', 'both', 'square', 'circle'. |
+| lineWidth | Number | 2 | Line width of the square in pixels. |
+| lineColor | String | 'white' | Line color of the square in HTML-syntax (e.g. '#123456'). |
+| circleRadius | Number | 3 | Radius of the circle in pixels. |
+| circleColor | String | 'white' | Color of the circle in HTML-syntax (e.g. '#123456'). |
+| map | String | ':control:.svg' | Link to world-image in equirectangular projection,<br/>on which the square and circle of the map-view is shown. |
+| style | Object | {<br/>backgroundColor: '#919eac',<br/>border: '2px solid black',<br/>borderRadius: '5px',<br/>padding: '3px'<br/>} | Style-options for canvas-element in HTML-syntax.<br/>Given style-options are merged into default style. |
 
 Building minified version
 -------------------------
