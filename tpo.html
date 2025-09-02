@@ -4,28 +4,33 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="author" content="M. Friedl">
-		<meta name="date" content="2022-05-12T20:22:37+01:00">
+		<meta name="date" content="2025-08-31T09:32:37+01:00">
 		<meta name="description" content="WorldMiniMap">
 		<meta name="keywords" content="map, wms, tms, wmts">
 		<title>WorldMiniMap</title>
 		<!-- leaflet.css und leaflet.js von externer Quelle einbinden -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-		<script src="https://cdn.jsdelivr.net/npm/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
-		<script src="dist/Control.WorldMiniMap.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.css" crossorigin="" />
+		<script type="importmap">{
+			"imports": {
+				  "leaflet": "https://unpkg.com/leaflet@2.0.0-alpha.1/dist/leaflet.js"
+				, "WorldMiniMap": "https://github.com/maneoverland/leaflet.WorldMiniMap/blob/main/src/TestExportImport.js"
+			}
+		}</script>
 	</head>
 	<body style="margin:0;padding:0;background-color:#f0f0f0;height:100%;">
 		<main style="height:100%;">
 			<div id="map" style="background-color:#ffffff;height:100%;"></div>
-			<script type='text/javascript'>
-				var map = new L.Map('map');
+			<script type="module">
+				import L, {Map, TileLayer, Marker, Circle, Polygon, Popup, Control} from 'leaflet';
+				import high from 'WorldMiniMap';
+				var map = new Map('map');
 				// create WorldMiniMap with some options and add to map
-				var worldMiniMap = L.control.worldMiniMap({position: 'topright', style: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}}).addTo(map);
+//				var worldMiniMap = new wMM.WorldMiniMap({position: 'topright', circleColor: 'red', containerStyle: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}}).addTo(map);
 				var tpoUrl='https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png';
 				var tpoAttrib='<a href="https://www.bkg.bund.de/" target="_blank">Bundesamt für Kartographie und Geodäsie</a>';
-				var tpo = new L.TileLayer(tpoUrl, {minZoom: 0, maxZoom: 19, attribution: tpoAttrib});
-
+				var tpo = new TileLayer(tpoUrl, {minZoom: 0, maxZoom: 19, attribution: tpoAttrib});
 				map.addLayer(tpo);
-				map.setView(new L.LatLng(48.1, 11.9),7);
+				map.setView([48.1, 11.9],7);
 			</script>
 		</main>
 	</body>
