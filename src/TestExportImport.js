@@ -1,3 +1,4 @@
-﻿export function high () {
-	console.log ();
+﻿export function high (text) {
+	console.log (text);
+
 }
