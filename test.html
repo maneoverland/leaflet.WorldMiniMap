@@ -10,10 +10,12 @@
 		<title>WorldMiniMap</title>
 		<!-- leaflet.css und leaflet.js von externer Quelle einbinden -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.css" crossorigin="" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet-burgermenu@latest/dist/leaflet-burgermenu.css" crossorigin="" />
 		<script type="importmap">{
 			"imports": {
 				  "leaflet": "https://unpkg.com/leaflet@2.0.0-alpha.1/dist/leaflet.js"
 				, "WorldMiniMap": "http://localhost/WorldMiniMap/dist/WorldMiniMap.js"
+				, "leaflet-burgermenu": "https://unpkg.com/leaflet-burgermenu@latest/dist/leaflet-burgermenu.esm.min.js"
 			}
 		}</script>
 	</head>
@@ -21,8 +23,9 @@
 		<main style="height:100%;">
 			<div id="map" style="background-color:#ffffff;height:100%;"></div>
 			<script type="module">
-				import {Map, TileLayer} from 'leaflet';
+				import {Map, TileLayer, Control} from 'leaflet';
 				import {WorldMiniMap} from 'WorldMiniMap';
+				import {BurgerMenuControl} from 'leaflet-burgermenu';
 				// create map
 				var map = new Map('map');
 				map.setView([48.1, 11.9],7);
@@ -34,8 +37,57 @@
 				// create map-control WorldMiniMap with options
 //				var wMM = new WorldMiniMap ();
 				var wMM = new WorldMiniMap ({position: 'topright', circleColor: 'red', containerStyle: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}});
+				var wMM_yellow = new WorldMiniMap ({position: 'topright', containerStyle: {backgroundColor: 'yellow'}});
 //				var wMM = new WorldMiniMap ({position: 'topright', circleColor: 'red'});
 				map.addControl (wMM);
+
+				new BurgerMenuControl({
+					title: 'main',
+					menuItems: [
+						{
+							title: 'add WorldMiniMap',
+							onClick: () => { wMM.addTo (map); },
+						},
+						{
+							title: 'remove WorldMiniMap',
+							onClick: () => { wMM.remove (); },
+						},
+						{
+							title: 'position',
+							menuItems: [
+								{
+									title: 'position: topright',
+									onClick: () => { wMM.setOptions ({position: 'topright'}); },
+								},
+								{
+									title: 'position: bottomright',
+									onClick: () => { wMM.setOptions ({position: 'bottomright'}); },
+								}
+							]
+						},
+						{
+							title: 'size + background',
+							menuItems: [
+								{
+									title: '168 x 84 red',
+									onClick: () => { wMM.setOptions ({width: 168, height: 84, containerStyle: {backgroundColor: 'red'}}); },
+								},
+								{
+									title: '300 x 150 white',
+									onClick: () => { wMM.setOptions ({width: 300, height: 150, containerStyle: {backgroundColor: 'white'}}); },
+								}
+							]
+						},
+						{
+							title: 'add WorldMiniMap_yellow',
+							onClick: () => { wMM_yellow.addTo (map); },
+						},
+						{
+							title: 'remove WorldMiniMap_yellow',
+							onClick: () => { wMM.remove (); },
+						},
+					]
+				}).addTo(map);
 			</script>
 		</main>
 	</body>
