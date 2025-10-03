@@ -60,7 +60,7 @@ var wMM = new WorldMiniMap({position: 'topright', circleColor: 'red', containerS
 ### Changing options on-the-fly
 In class-method "setOptions" create-options for the WorldMiniMap-control can be changed on-the-fly. A simple example can be seen in [test.html](https://github.com/maneoverland/leaflet.WorldMiniMap/blob/main/test.html)
 
-### Available Options (merged in a singloe option-Object)
+### Available options (merged in one option-Object)
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | position | String | 'bottomleft' | The position of the control (one of the map corners). Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright' |
