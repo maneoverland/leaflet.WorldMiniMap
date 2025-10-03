@@ -20,7 +20,7 @@ Usage
 | Version          |  Description |  Required leaflet-version |
 | ---             | --- | --- |
 | [v1.0.0](https://github.com/maneoverland/leaflet.WorldMiniMap/archive/refs/tags/v1.0.0.zip)        | Initial release. | leaflet-V1 |
-| [v2.0.0](https://github.com/maneoverland/leaflet.WorldMiniMap/archive/refs/tags/v2.0.0.zip)        | Updated release for changes . | leaflet-V2 |
+| [v2.0.0](https://github.com/maneoverland/leaflet.WorldMiniMap/archive/refs/tags/v2.0.0.zip)        | Updated release for changes of leafelet-V2. | leaflet-V2 |
 
 In the zip-archive are folders 'src' and 'dist'. Each folder contains a js-file - in the 'dist'-folder is the minified version of the js-file from the 'src'-folder.
 
