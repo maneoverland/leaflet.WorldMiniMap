@@ -38,7 +38,7 @@ To create the minimap from hosted version include following lines in your js clo
 		<script type="importmap">{
 			"imports": {
 				  "leaflet": "https://unpkg.com/leaflet@2.0.0-alpha.1/dist/leaflet.js"
-				, "WorldMiniMap": "http://localhost/WorldMiniMap/dist/WorldMiniMap.js"
+				, "WorldMiniMap": "https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@master/dist/WorldMiniMap.js"
 			}
 		}</script>
 ...
