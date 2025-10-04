@@ -71,7 +71,7 @@ In class-method "setOptions" create-options for the WorldMiniMap-control can be 
 | lineColor | String | 'white' | Line color of the square in HTML-syntax (e.g. '#123456') |
 | circleRadius | Number | 3 | Radius of the circle in pixels |
 | circleColor | String | 'white' | Color of the circle in HTML-syntax (e.g. '#123456') |
-| map | String | ':control:.svg' | Link to world-image in equirectangular projection, on which the square and circle of the map-view is shown |
+| map | String | 'https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@master/WorldMap.svg' | Link to world-image in equirectangular projection, on which the square and circle of the map-view is shown |
 | containerStyle | Object | {} | Style-options for canvas-element in HTML-syntax |
 
 Building minified version
