@@ -80,6 +80,8 @@ Building minified version
 -------------------------
 The minified version of js-script in 'dist'-folder is created from js-script in 'src'-folder by [Toptal JavaScript-Minifier](https://www.toptal.com/developers/javascript-minifier).
 
+**************************************************************************************************************************
+
 Using plugin-version 1 in leaflet-v1
 ------------------------------------
 The following text describes plugin-version 1.
