@@ -14,6 +14,8 @@ Demo:
 * [TopPlusOpen-map with user-options](https://maneoverland.github.io/leaflet.WorldMiniMap/tpo.html)
 * [TopPlusOpen-map including burger-menu for testing](https://maneoverland.github.io/leaflet.WorldMiniMap/test.html)
 
+This description ist for plugin-version 2 in leaflet-V2. See description at the end for using the functional widely identic plugin-version 1 in leaflet-V1.
+
 Usage
 -----
 ### Download
@@ -58,7 +60,7 @@ var wMM = new WorldMiniMap({position: 'topright', circleColor: 'red', containerS
 ```
 
 ### Changing options on-the-fly
-In class-method "setOptions" create-options for the WorldMiniMap-control can be changed on-the-fly. A simple example can be seen in [test.html](https://github.com/maneoverland/leaflet.WorldMiniMap/blob/main/test.html)
+In class-method "setOptions" create-options for the WorldMiniMap-control can be changed on-the-fly. A simple example can be seen in [test.html](https://github.com/maneoverland/leaflet.WorldMiniMap/blob/main/test.html).
 
 ### Available options (merged in one option-Object)
 | Option | Type | Default | Description |
@@ -77,3 +79,46 @@ In class-method "setOptions" create-options for the WorldMiniMap-control can be 
 Building minified version
 -------------------------
 The minified version of js-script in 'dist'-folder is created from js-script in 'src'-folder by [Toptal JavaScript-Minifier](https://www.toptal.com/developers/javascript-minifier).
+
+Using plugin-version 1 in leaflet-v1
+------------------------------------
+The followint text describes plugin-version 1.
+
+### Download source
+You can download the archive for plugin-version 1.0.0 via the link at the beginnin of this description.
+
+### Using hosted version
+The control v1.0.0 (which is to be used with leaflet-v1) is available on free CDN [jsDelivr](https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@1.0.0/dist/Control.WorldMiniMap.js).
+To create the minimap from hosted version include following line in your js
+```js
+<script src="https://cdn.jsdelivr.net/gh/maneoverland/leaflet.WorldMiniMap@1.0.0/dist/Control.WorldMiniMap.js" integrity="sha512-PFw8St3qenU1/dmwCfiYYN/bRcqY1p3+sBATR+rZ6622eyXOk/8izVtlmm/k8qW7KbRIJsku838WCV5LMs6FCg==" crossorigin=""></script>
+```
+
+### Example of using the included js-script
+When the js-script is included, then the minimap-control can either be created via option in map-creation
+```js
+var map = new L.Map('map', {worldMiniMapControl: true});
+```
+or alternatively with extra create-command including additional options
+```js
+var worldMiniMap = L.control.worldMiniMap({position: 'topright', style: {opacity: 0.9, borderRadius: '0px', backgroundColor: 'lightblue'}}).addTo(map);
+```
+
+A simple example can be seen in [indexV1.html](https://github.com/maneoverland/leaflet.WorldMiniMap/blob/main/indexV1.html).
+
+### Changing options on-the-fly
+Not supported in V1.0.0 of this plugin.
+
+### Available options (merged in one option-Object)
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| position | String | 'bottomleft' | The position of the control (one of the map corners). Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright' |
+| width | Number | 168 | The width of the world-image in pixels |
+| height | Number | 84 | The height of the world-image in pixels |
+| view | String | 'auto' | Controls the display of the map-view as a square or a circle. Possible values are 'auto', 'both', 'square', 'circle' |
+| lineWidth | Number | 2 | Line width of the square in pixels |
+| lineColor | String | 'white' | Line color of the square in HTML-syntax (e.g. '#123456') |
+| circleRadius | Number | 3 | Radius of the circle in pixels |
+| circleColor | String | 'white' | Color of the circle in HTML-syntax (e.g. '#123456') |
+| map | String | ':control:.svg' | Link to world-image in equirectangular projection, on which the square and circle of the map-view is shown |
+| style | Object | {} | Style-options for canvas-element in HTML-syntax |
