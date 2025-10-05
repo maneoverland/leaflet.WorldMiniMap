@@ -82,7 +82,7 @@ The minified version of js-script in 'dist'-folder is created from js-script in 
 
 Using plugin-version 1 in leaflet-v1
 ------------------------------------
-The followint text describes plugin-version 1.
+The following text describes plugin-version 1.
 
 ### Download source
 You can download the archive for plugin-version 1.0.0 via the link at the beginnin of this description.
